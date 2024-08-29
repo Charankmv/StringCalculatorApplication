@@ -20,8 +20,8 @@ export class StringCalaculatorComponent {
       this.calculatedResult = "";
       return;
     }
-    let delimiters = /[,\n]/;
-    var value = stringValue.split(delimiters)
+    const delimiters: string[] = [",", "\n"];
+    var value = stringValue.split(new RegExp(delimiters.join('|'), 'g'))
     this.calculatedResult = this.add(value)
     }
 
