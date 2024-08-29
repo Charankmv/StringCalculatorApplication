@@ -16,9 +16,13 @@ export class StringCalaculatorComponent {
     this.addNumbers(this.stringValue);
   }
   public addNumbers(stringValue: string) {
-    var value = [];
-    value = stringValue.split(',')
     var sum = 0;
+    var value = [];
+    if (stringValue == null || stringValue == "") {
+      this.calculatedResult = sum.toString();
+      return;
+    } 
+    value = stringValue.split(',')
     value.forEach(s => { sum = sum + parseInt(s) })
     this.calculatedResult = sum.toString();
     }
