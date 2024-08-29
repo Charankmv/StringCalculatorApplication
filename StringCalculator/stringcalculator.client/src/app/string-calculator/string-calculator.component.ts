@@ -9,6 +9,12 @@ import { Component } from "@angular/core";
 export class StringCalaculatorComponent {
   constructor() { }
 
-  public stringValue: string=""
+  public stringValue: string = ""
+  public calculatedResult:string=""
+
+  public onCalculate() {
+    
+  }
+
 
 }
