@@ -19,8 +19,9 @@ export class StringCalaculatorComponent {
     if (stringValue == null || stringValue == "") {
       this.calculatedResult = "";
       return;
-    } 
-    var value = stringValue.split(',')
+    }
+    let delimiters = /[,\n]/;
+    var value = stringValue.split(delimiters)
     this.calculatedResult = this.add(value)
     }
 
