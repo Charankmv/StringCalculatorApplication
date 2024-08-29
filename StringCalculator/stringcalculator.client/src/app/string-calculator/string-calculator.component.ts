@@ -10,11 +10,19 @@ export class StringCalaculatorComponent {
   constructor() { }
 
   public stringValue: string = ""
-  public calculatedResult:string=""
+  public calculatedResult: string = "";
 
   public onCalculate() {
-    
+    this.addNumbers(this.stringValue);
   }
+  public addNumbers(stringValue: string) {
+    var value = [];
+    value = stringValue.split(',')
+    var sum = 0;
+    value.forEach(s => { sum = sum + parseInt(s) })
+    this.calculatedResult = sum.toString();
+    }
 
+  
 
 }
