@@ -21,6 +21,12 @@ export class StringCalaculatorComponent {
       return;
     }
     const delimiters: string[] = [",", "\n"];
+    if (stringValue.startsWith("//")) {
+      const delimiterEndIndex = stringValue.indexOf('\n');
+      const delimiter = stringValue.substring(2, delimiterEndIndex);
+      delimiters.push(delimiter);
+      stringValue = stringValue.substring(delimiterEndIndex + 1);
+    }
     var value = stringValue.split(new RegExp(delimiters.join('|'), 'g'))
     this.calculatedResult = this.add(value)
     }
