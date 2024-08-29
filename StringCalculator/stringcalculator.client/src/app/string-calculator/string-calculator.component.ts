@@ -16,17 +16,18 @@ export class StringCalaculatorComponent {
     this.addNumbers(this.stringValue);
   }
   public addNumbers(stringValue: string) {
-    var sum = 0;
-    var value = [];
     if (stringValue == null || stringValue == "") {
-      this.calculatedResult = sum.toString();
+      this.calculatedResult = "";
       return;
     } 
-    value = stringValue.split(',')
-    value.forEach(s => { sum = sum + parseInt(s) })
-    this.calculatedResult = sum.toString();
+    var value = stringValue.split(',')
+    this.calculatedResult = this.add(value)
     }
 
-  
+  private add(value: string[]) {
+    var sum = 0;
+    value.forEach(s => { sum = sum + parseInt(s) })
+    return sum.toString();
+  }
 
 }
