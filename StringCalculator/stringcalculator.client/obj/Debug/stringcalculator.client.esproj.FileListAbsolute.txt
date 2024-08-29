@@ -1,0 +1,1 @@
+C:\Users\manoj\OneDrive\Desktop\StringCalculatorApplication\StringCalculator\stringcalculator.client\obj\Debug\stringcalculator.client.esproj.CoreCompileInputs.cache
