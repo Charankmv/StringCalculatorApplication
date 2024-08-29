@@ -3,8 +3,11 @@
   <kendo-textbox placeholder="Enter the Value" [(ngModel)]="stringValue"
                  style="width: 300px; height: 40px;">
   </kendo-textbox>
-  <input type="text" placeholder="Calculated Result" [value]="calculatedResult" disabled 
+  <input type="text" *ngIf="!isNegative" placeholder="Calculated Result" [value]="calculatedResult" disabled
          style="width: 280px; height: 35px; margin-top: 10px;">
+
+  <input type="text" *ngIf="isNegative" placeholder="Calculated Result" [value]="calculatedResult" disabled
+         style="width: 280px; height: 35px; margin-top: 10px; background-color:red">
   <button (click)="onCalculate()" class="center-button">Submit</button>
 </div>
 

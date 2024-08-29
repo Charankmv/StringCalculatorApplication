@@ -11,11 +11,13 @@ export class StringCalaculatorComponent {
 
   public stringValue: string = ""
   public calculatedResult: string = "";
+  public isNegative: boolean = false;
 
   public onCalculate() {
     this.addNumbers();
   }
   public addNumbers() {
+    this.isNegative = false;
     var stringValue: string = this.stringValue;
     if (stringValue == null || stringValue == "") {
       this.calculatedResult = "";
@@ -29,8 +31,16 @@ export class StringCalaculatorComponent {
       stringValue = stringValue.substring(delimiterEndIndex + 1);
     }
     var value = stringValue.split(new RegExp(delimiters.join('|'), 'g')).map(Number);
-    this.calculatedResult = this.add(value)
+    const negativeValues: number[] = value.filter(n => n < 0);
+    if (negativeValues.length > 0) {
+      this.isNegative = true;
+      this.calculatedResult = "Negatives not allowed: " + negativeValues.join(", ");
+      throw new Error("Negatives not allowed: " + negativeValues.join(", "));
     }
+    else {
+      this.calculatedResult = this.add(value)
+    }
+   }
 
   private add(value: number[]) {
     var sum = 0;
