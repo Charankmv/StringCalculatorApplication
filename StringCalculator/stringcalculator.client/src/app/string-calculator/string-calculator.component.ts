@@ -13,9 +13,10 @@ export class StringCalaculatorComponent {
   public calculatedResult: string = "";
 
   public onCalculate() {
-    this.addNumbers(this.stringValue);
+    this.addNumbers();
   }
-  public addNumbers(stringValue: string) {
+  public addNumbers() {
+    var stringValue: string = this.stringValue;
     if (stringValue == null || stringValue == "") {
       this.calculatedResult = "";
       return;
@@ -27,13 +28,13 @@ export class StringCalaculatorComponent {
       delimiters.push(delimiter);
       stringValue = stringValue.substring(delimiterEndIndex + 1);
     }
-    var value = stringValue.split(new RegExp(delimiters.join('|'), 'g'))
+    var value = stringValue.split(new RegExp(delimiters.join('|'), 'g')).map(Number);
     this.calculatedResult = this.add(value)
     }
 
-  private add(value: string[]) {
+  private add(value: number[]) {
     var sum = 0;
-    value.forEach(s => { sum = sum + parseInt(s) })
+    value.forEach(s => { sum = sum + s })
     return sum.toString();
   }
 
